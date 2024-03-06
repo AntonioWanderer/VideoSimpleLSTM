@@ -7,5 +7,5 @@ if __name__ == "__main__":
     model = Model.get_model(x.shape[1:])
     print(x.shape, y.shape)
     print(model.summary())
-    model.fit(x,y,epochs=10)
+    model.fit(x,y,epochs=100)
     model.save(filepath=Config.modelname)
