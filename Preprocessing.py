@@ -8,7 +8,9 @@ def loadVideo():
     while ret:
         ret, frame = cap.read()
         if ret:
-            frames.append(frame)
+            h,w,d = frame.shape
+            new = cv2.resize(src=frame,dsize=(w//4,h//4))
+            frames.append(new)
     return numpy.array(frames)
 
 def normalization(tensor, direct = True):
@@ -16,7 +18,6 @@ def normalization(tensor, direct = True):
         return tensor/255
     else:
         return tensor*255
-
 def to_batch(video_tensor):
     N = video_tensor.shape[0]
     x = []
